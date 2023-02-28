@@ -28,13 +28,13 @@ async function login() { // Log in when signed up
             activeUser.push(userEmail);
             activeUser.push(userPassword);
             await backend.setItem('activeUser', JSON.stringify(activeUser));
-            window.open("summary.html", "_self");
-        } else {
+            await window.open("summary.html", "_self");
+        }
+        if (email !== userEmail && password !== userPassword) {
             document.getElementById('failed-login').classList.remove('d-none');
             document.getElementById('login-window').classList.add('login-window-failed');
         }
     }
-
 }
 
 function hideFailedLoginAndUserSignUP() {
